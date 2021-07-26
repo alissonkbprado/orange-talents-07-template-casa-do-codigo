@@ -11,13 +11,13 @@ import javax.validation.constraints.Size;
 public class AutorRequest {
 
     @NotNull @NotBlank @Size(min = 5, max = 250)
-    String nome;
+    private String nome;
 
     @NotNull @NotBlank @Email @Size(max = 250) @EmailAutorUnico
-    String email;
+    private String email;
 
     @NotNull @NotBlank @Size(max = 400)
-    String descricao;
+    private String descricao;
 
     public AutorRequest(String nome, String email, String descricao) {
         this.nome = nome;
