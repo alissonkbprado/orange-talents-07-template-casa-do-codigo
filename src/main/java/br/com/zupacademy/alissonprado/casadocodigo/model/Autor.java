@@ -17,6 +17,7 @@ public class Autor {
     private String nome;
 
     @NotNull @NotBlank @Email @Size(max = 250)
+    @Column(unique = true)
     private String email;
 
     @NotNull @NotBlank @Size(max = 400)
@@ -29,7 +30,7 @@ public class Autor {
     /**
      *
      * @param nome
-     * @param email
+     * @param email precisa ser único
      * @param descricao é obrigatório, tamanho máximo 400
      */
     public Autor(String nome, String email, String descricao) {

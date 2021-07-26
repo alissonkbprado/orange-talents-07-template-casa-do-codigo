@@ -1,6 +1,7 @@
 package br.com.zupacademy.alissonprado.casadocodigo.request;
 
 import br.com.zupacademy.alissonprado.casadocodigo.model.Autor;
+import br.com.zupacademy.alissonprado.casadocodigo.validacao.EmailAutorUnico;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,7 @@ public class AutorRequest {
     @NotNull @NotBlank @Size(min = 5, max = 250)
     String nome;
 
-    @NotNull @NotBlank @Email @Size(max = 250)
+    @NotNull @NotBlank @Email @Size(max = 250) @EmailAutorUnico
     String email;
 
     @NotNull @NotBlank @Size(max = 400)

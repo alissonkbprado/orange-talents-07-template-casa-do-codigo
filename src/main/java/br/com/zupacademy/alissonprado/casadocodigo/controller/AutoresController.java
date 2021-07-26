@@ -14,11 +14,11 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/autores")
-public class AutorController {
+public class AutoresController {
 
     AutorRepository autorRepository;
 
-    public AutorController(AutorRepository autorRepository) {
+    public AutoresController(AutorRepository autorRepository) {
         this.autorRepository = autorRepository;
     }
 
