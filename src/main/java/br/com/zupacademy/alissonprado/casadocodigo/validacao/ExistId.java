@@ -4,19 +4,18 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
-@Constraint(validatedBy = UniqueValueValidator.class)
+@Constraint(validatedBy = ExistIdValidator.class)
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueValue {
+public @interface ExistId {
 
-    String message() default ("O campo já está cadastrado com o valor informado. Este campo é de valor único.");
+    String message() default ("O id informado não está cadatrado. Deve ser informado um id já cadastrado no sistema");
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    String fieldName();
-
     Class<?> domainClass();
+
 }

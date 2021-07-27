@@ -1,29 +1,42 @@
 package br.com.zupacademy.alissonprado.casadocodigo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class Categoria {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @NotNull @NotBlank
+    @NotBlank
+    @Column(nullable = false)
     private String nome;
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Livro> livros;
 
     /**
      *
-     * @param nome tem que ser único
+     * @param nome NotNull, Unique
      */
     public Categoria(String nome) {
         if(nome.isBlank())
             throw new IllegalArgumentException("Todos os dados de Categoria devem ser preenchidos.");
 
         this.nome = nome;
+    }
+
+    /**
+     *
+     * @param id NotNull
+     */
+    public Categoria(Long id) {
+        if(id == null)
+            throw new IllegalArgumentException("Campo id não pode ser nulo.");
+
+        this.id = id;
     }
 }

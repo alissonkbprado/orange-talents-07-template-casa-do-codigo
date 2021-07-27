@@ -1,5 +1,7 @@
 package br.com.zupacademy.alissonprado.casadocodigo.config;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,24 @@ public class ErroDeValidacaoHandler {
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
 
         return buildValidationErrors(fieldErrors, responseList);
+    }
+
+    @ExceptionHandler(InvalidFormatException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErroDeFormularioResponse handleInvalidFormatException(InvalidFormatException exception) {
+
+        String nomeCampo = "campo";
+
+        if (exception.getPath() != null && !exception.getPath().isEmpty()) {
+            JsonMappingException.Reference path = exception.getPath().get(exception.getPath().size() - 1);
+            if (path != null) {
+                nomeCampo = path.getFieldName();
+            }
+        }
+
+        String mensagem = "O valor informado (" + exception.getValue().toString() + ") não é do tipo requerido ou está em formato inválido.";
+
+        return new ErroDeFormularioResponse(exception.getValue().toString(), mensagem);
     }
 
     private List<ErroDeFormularioResponse> buildValidationErrors(List<FieldError> fieldErrors, List<ErroDeFormularioResponse> responseList) {
