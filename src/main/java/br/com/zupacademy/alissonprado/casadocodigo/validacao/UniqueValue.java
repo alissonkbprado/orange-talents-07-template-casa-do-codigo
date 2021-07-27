@@ -4,16 +4,19 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
-@Constraint(validatedBy = EmailAutorUnicoValidator.class)
+@Constraint(validatedBy = UniqueValueValidator.class)
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EmailAutorUnico {
+public @interface UniqueValue {
 
-    String message() default "O e-mail informado já está cadastrado.";
+    String message() default ("O campo informado já está cadastrado com o valor passado.");
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
+    String fieldName();
+
+    Class<?> domainClass();
 }
