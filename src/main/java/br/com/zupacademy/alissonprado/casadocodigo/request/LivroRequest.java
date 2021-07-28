@@ -8,7 +8,6 @@ import br.com.zupacademy.alissonprado.casadocodigo.validacao.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.ISBN;
-import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
@@ -42,12 +41,12 @@ public class LivroRequest {
     private LocalDate publicacao;
 
     @NotNull
-    @NumberFormat
+    @Positive
     @ExistId(domainClass = Categoria.class, message = "O id da Categoria informado não está cadatrado.")
     private Integer idCategoria;
 
     @NotNull
-    @NumberFormat
+    @Positive
     @ExistId(domainClass = Autor.class,  message = "O id do Autor informado não está cadatrado.")
     private Integer idAutor;
 

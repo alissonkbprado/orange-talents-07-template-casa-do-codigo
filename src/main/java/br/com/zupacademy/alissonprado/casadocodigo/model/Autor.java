@@ -35,6 +35,14 @@ public class Autor {
     private List<Livro> livros;
 
     /**
+     * Não utilizar.
+     * Criado por exigencia da JPA
+     */
+    @Deprecated
+    public Autor() {
+    }
+
+    /**
      *
      * @param nome NotNull
      * @param email NotNull, Unique
@@ -58,6 +66,13 @@ public class Autor {
             throw new IllegalArgumentException("Campo id não pode ser nulo.");
 
         this.id = id;
+    }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }

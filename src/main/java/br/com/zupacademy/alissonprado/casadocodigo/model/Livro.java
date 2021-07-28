@@ -54,6 +54,14 @@ public class Livro {
     private Autor autor;
 
     /**
+     * Não utilizar.
+     * Criado por exigencia da JPA
+     */
+    @Deprecated
+    public Livro() {
+    }
+
+    /**
      *
      * @param titulo NotNull, Unique
      * @param resumo NotNull, Max 500
@@ -107,5 +115,33 @@ public class Livro {
 
     public String getTitulo() {
         return titulo;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public String getSumario() {
+        return sumario;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public Integer getPaginas() {
+        return paginas;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public LocalDate getPublicacao() {
+        return publicacao;
+    }
+
+    public Autor getAutor() {
+        return autor;
     }
 }

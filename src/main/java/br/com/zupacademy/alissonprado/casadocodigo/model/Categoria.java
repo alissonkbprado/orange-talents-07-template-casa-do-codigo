@@ -19,6 +19,14 @@ public class Categoria {
     private List<Livro> livros;
 
     /**
+     * Não utilizar.
+     * Criado por exigencia da JPA
+     */
+    @Deprecated
+    public Categoria() {
+    }
+
+    /**
      *
      * @param nome NotNull, Unique
      */
