@@ -4,7 +4,7 @@ import br.com.zupacademy.alissonprado.casadocodigo.model.Livro;
 
 import java.time.format.DateTimeFormatter;
 
-public class LivroResponse {
+public class LivroDetalhesResponse {
 
     private String id;
     private String titulo;
@@ -17,7 +17,7 @@ public class LivroResponse {
     private String nomeAutor;
     private String descricaoAutor;
 
-    public LivroResponse(Livro livro) {
+    public LivroDetalhesResponse(Livro livro) {
         this.id = livro.getId().toString();
         this.titulo = livro.getTitulo();
         this.resumo = livro.getResumo();

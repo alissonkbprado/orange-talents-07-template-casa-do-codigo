@@ -2,7 +2,7 @@ package br.com.zupacademy.alissonprado.casadocodigo.controller;
 
 import br.com.zupacademy.alissonprado.casadocodigo.model.Categoria;
 import br.com.zupacademy.alissonprado.casadocodigo.repository.CategoriaRepository;
-import br.com.zupacademy.alissonprado.casadocodigo.request.CategoriaRequest;
+import br.com.zupacademy.alissonprado.casadocodigo.request.CategoriaCadastroRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +24,9 @@ public class CategoriasController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid CategoriaRequest categoriaRequest){
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid CategoriaCadastroRequest categoriaCadastroRequest){
 
-        Categoria categoria = categoriaRequest.toModel();
+        Categoria categoria = categoriaCadastroRequest.toModel();
 
         categoriaRepository.save(categoria);
 

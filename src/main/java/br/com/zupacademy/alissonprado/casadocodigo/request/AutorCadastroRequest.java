@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class AutorRequest {
+public class AutorCadastroRequest {
 
     @NotNull @NotBlank @Size(min = 5, max = 250)
     private String nome;
@@ -20,7 +20,7 @@ public class AutorRequest {
     @NotNull @NotBlank @Size(max = 400)
     private String descricao;
 
-    public AutorRequest(String nome, String email, String descricao) {
+    public AutorCadastroRequest(String nome, String email, String descricao) {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;

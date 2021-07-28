@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class LivroRequest {
+public class LivroCadastroRequest {
 
     @NotBlank @UniqueValue(domainClass = Livro.class, fieldName = "titulo")
     private String titulo;
@@ -51,7 +51,7 @@ public class LivroRequest {
     private Integer idAutor;
 
     @JsonCreator
-    public LivroRequest(String titulo, String resumo, String sumario, BigDecimal preco, Integer paginas, String isbn, LocalDate publicacao, Integer idCategoria, Integer idAutor) {
+    public LivroCadastroRequest(String titulo, String resumo, String sumario, BigDecimal preco, Integer paginas, String isbn, LocalDate publicacao, Integer idCategoria, Integer idAutor) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;

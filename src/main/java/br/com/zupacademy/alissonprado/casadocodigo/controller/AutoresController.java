@@ -2,7 +2,7 @@ package br.com.zupacademy.alissonprado.casadocodigo.controller;
 
 import br.com.zupacademy.alissonprado.casadocodigo.model.Autor;
 import br.com.zupacademy.alissonprado.casadocodigo.repository.AutorRepository;
-import br.com.zupacademy.alissonprado.casadocodigo.request.AutorRequest;
+import br.com.zupacademy.alissonprado.casadocodigo.request.AutorCadastroRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +24,9 @@ public class AutoresController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid AutorRequest autorRequest){
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid AutorCadastroRequest autorCadastroRequest){
 
-        Autor autor = autorRequest.toModel();
+        Autor autor = autorCadastroRequest.toModel();
 
         autorRepository.save(autor);
 

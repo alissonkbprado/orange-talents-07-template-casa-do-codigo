@@ -2,9 +2,9 @@ package br.com.zupacademy.alissonprado.casadocodigo.controller;
 
 import br.com.zupacademy.alissonprado.casadocodigo.model.Livro;
 import br.com.zupacademy.alissonprado.casadocodigo.repository.LivroRepository;
-import br.com.zupacademy.alissonprado.casadocodigo.request.LivroRequest;
+import br.com.zupacademy.alissonprado.casadocodigo.request.LivroCadastroRequest;
 import br.com.zupacademy.alissonprado.casadocodigo.response.LivroListProjectionResponse;
-import br.com.zupacademy.alissonprado.casadocodigo.response.LivroResponse;
+import br.com.zupacademy.alissonprado.casadocodigo.response.LivroDetalhesResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +27,9 @@ public class LivrosController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid LivroRequest livroRequest){
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid LivroCadastroRequest livroCadastroRequest){
 
-        Livro livro = livroRequest.toModel();
+        Livro livro = livroCadastroRequest.toModel();
 
         livroRepository.save(livro);
 
@@ -47,7 +47,7 @@ public class LivrosController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<LivroResponse> detalhar(@PathVariable String id) {
+    public ResponseEntity<LivroDetalhesResponse> detalhar(@PathVariable String id) {
 
         if (!id.matches("[0-9]*"))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Formato de id inválido");
@@ -55,7 +55,7 @@ public class LivrosController {
         Optional<Livro> livroOptional = livroRepository.findById(Long.parseLong(id));
 
         if(livroOptional.isPresent())
-            return ResponseEntity.ok(new LivroResponse(livroOptional.get()));
+            return ResponseEntity.ok(new LivroDetalhesResponse(livroOptional.get()));
 
         return ResponseEntity.status(404).build();
 
