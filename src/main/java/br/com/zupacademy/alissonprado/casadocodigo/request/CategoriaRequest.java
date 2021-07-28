@@ -18,6 +18,7 @@ public class CategoriaRequest {
 
     @JsonCreator
     public CategoriaRequest(@JsonProperty("nome") String nome) {
+
         this.nome = nome;
     }
 

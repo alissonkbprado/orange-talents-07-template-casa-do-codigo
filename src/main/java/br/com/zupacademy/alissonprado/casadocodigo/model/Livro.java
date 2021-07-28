@@ -1,6 +1,5 @@
 package br.com.zupacademy.alissonprado.casadocodigo.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.ISBN;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,7 +36,8 @@ public class Livro {
     @Column(nullable = false)
     private Integer paginas;
 
-    @NotBlank @ISBN
+    @NotBlank
+    @ISBN
     @Column(unique = true, nullable = false)
     private String isbn;
 
@@ -99,5 +99,13 @@ public class Livro {
         this.publicacao = publicacao;
         this.categoria = categoria;
         this.autor = autor;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
     }
 }

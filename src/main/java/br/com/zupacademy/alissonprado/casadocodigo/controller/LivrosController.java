@@ -3,14 +3,13 @@ package br.com.zupacademy.alissonprado.casadocodigo.controller;
 import br.com.zupacademy.alissonprado.casadocodigo.model.Livro;
 import br.com.zupacademy.alissonprado.casadocodigo.repository.LivroRepository;
 import br.com.zupacademy.alissonprado.casadocodigo.request.LivroRequest;
+import br.com.zupacademy.alissonprado.casadocodigo.response.LivroListProjectionResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/livros")
@@ -32,4 +31,32 @@ public class LivrosController {
 
         return ResponseEntity.status(200).build();
     }
+
+    @GetMapping
+    public List<LivroListProjectionResponse> listar(@RequestParam(required = false) String titulo){
+
+        if(titulo.isBlank())
+            return  livroRepository.findLivros();
+
+        return livroRepository.findLivrosByTitulo(titulo);
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

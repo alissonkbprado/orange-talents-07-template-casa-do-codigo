@@ -8,7 +8,6 @@ import br.com.zupacademy.alissonprado.casadocodigo.validacao.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.ISBN;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.*;
@@ -33,7 +32,9 @@ public class LivroRequest {
     @DecimalMin(value = "100")
     private Integer paginas;
 
-    @NotBlank @ISBN @UniqueValue(domainClass = Livro.class, fieldName = "isbn")
+    @NotBlank
+    @ISBN
+    @UniqueValue(domainClass = Livro.class, fieldName = "isbn")
     private String isbn;
 
     @Future
@@ -41,13 +42,13 @@ public class LivroRequest {
     private LocalDate publicacao;
 
     @NotNull
-    @ExistId(domainClass = Categoria.class, message = "O id da Categoria informado não está cadatrado.")
     @NumberFormat
+    @ExistId(domainClass = Categoria.class, message = "O id da Categoria informado não está cadatrado.")
     private Integer idCategoria;
 
     @NotNull
-    @ExistId(domainClass = Autor.class,  message = "O id do Autor informado não está cadatrado.")
     @NumberFormat
+    @ExistId(domainClass = Autor.class,  message = "O id do Autor informado não está cadatrado.")
     private Integer idAutor;
 
     @JsonCreator
