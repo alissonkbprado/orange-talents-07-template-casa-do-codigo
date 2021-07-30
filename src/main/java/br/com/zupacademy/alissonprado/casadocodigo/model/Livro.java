@@ -34,7 +34,7 @@ public class Livro {
     @NotNull
     @DecimalMin(value = "100")
     @Column(nullable = false)
-    private Integer paginas;
+    private Short paginas;
 
     @NotBlank
     @ISBN
@@ -71,7 +71,7 @@ public class Livro {
      * @param categoria NotNull
      * @param autor NotNull
      */
-    public Livro(String titulo, String resumo, BigDecimal preco, Integer paginas, String isbn, Categoria categoria, Autor autor) {
+    public Livro(String titulo, String resumo, BigDecimal preco, Short paginas, String isbn, Categoria categoria, Autor autor) {
         if(titulo.isBlank() || resumo.isBlank() || preco == null || paginas == null || isbn.isBlank() || categoria == null || autor == null)
             throw new IllegalArgumentException("Todos os dados de Livro devem ser preenchidos.");
         this.titulo = titulo;
@@ -95,7 +95,7 @@ public class Livro {
      * @param categoria NotNull
      * @param autor NotNull
      */
-    public Livro(String titulo, String resumo, String sumario, BigDecimal preco, Integer paginas, String isbn, LocalDate publicacao, Categoria categoria, Autor autor) {
+    public Livro(String titulo, String resumo, String sumario, BigDecimal preco, Short paginas, String isbn, LocalDate publicacao, Categoria categoria, Autor autor) {
         if(titulo.isBlank() || resumo.isBlank() || preco == null || paginas == null || isbn.isBlank() || categoria == null || autor == null)
             throw new IllegalArgumentException("Os atributos (titulo, resumo, preco, paginas, isbn, categoria, autor) são obrigatórios.");
         this.titulo = titulo;
@@ -129,7 +129,7 @@ public class Livro {
         return preco;
     }
 
-    public Integer getPaginas() {
+    public Short getPaginas() {
         return paginas;
     }
 

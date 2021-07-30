@@ -11,7 +11,6 @@ import javax.validation.constraints.Size;
 public class PaisCadastroRequest {
 
     @NotBlank
-    @Size(max = 250)
     @UniqueValue(domainClass = Pais.class, fieldName = "nome")
     private String nome;
 

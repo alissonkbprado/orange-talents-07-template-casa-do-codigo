@@ -23,16 +23,20 @@ public class Pais {
 
     /**
      *
+     * @param id NotNull
+     */
+    public Pais(Long id) {
+        this.id = id;
+    }
+
+    /**
+     *
      * @param nome Unique
      */
     public Pais(String nome) {
         if(nome.isBlank())
             throw new IllegalArgumentException("Todos os dados de Pais devem ser preenchidos.");
         this.nome = nome;
-    }
-
-    public Pais(Long id) {
-        this.id = id;
     }
 
     public Long getId() {

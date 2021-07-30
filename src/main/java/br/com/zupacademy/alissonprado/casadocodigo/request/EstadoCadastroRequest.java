@@ -6,12 +6,10 @@ import br.com.zupacademy.alissonprado.casadocodigo.repository.EstadoRepository;
 import br.com.zupacademy.alissonprado.casadocodigo.validacao.ExistId;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 public class EstadoCadastroRequest {
 
     @NotBlank
-    @Size(max = 250)
     private String nome;
 
     @NotBlank

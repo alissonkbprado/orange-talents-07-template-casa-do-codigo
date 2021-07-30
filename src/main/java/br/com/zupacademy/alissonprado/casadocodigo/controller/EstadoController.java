@@ -3,7 +3,7 @@ package br.com.zupacademy.alissonprado.casadocodigo.controller;
 import br.com.zupacademy.alissonprado.casadocodigo.model.Estado;
 import br.com.zupacademy.alissonprado.casadocodigo.repository.EstadoRepository;
 import br.com.zupacademy.alissonprado.casadocodigo.request.EstadoCadastroRequest;
-import br.com.zupacademy.alissonprado.casadocodigo.validacao.ProibeNomeEstadoEPaisDuplicadoValidator;
+import br.com.zupacademy.alissonprado.casadocodigo.validacao.ProibeNomeEstadoEPaisDuplicadoEstadoValidator;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +16,16 @@ import javax.validation.Valid;
 public class EstadoController {
 
     private EstadoRepository estadoRepository;
+    private ProibeNomeEstadoEPaisDuplicadoEstadoValidator proibeNomeEstadoEPaisDuplicadoEstadoValidator;
 
-    private ProibeNomeEstadoEPaisDuplicadoValidator proibeNomeEStadoEPaisDuplicadoValidator;
-
-    public EstadoController(EstadoRepository estadoRepository, ProibeNomeEstadoEPaisDuplicadoValidator proibeNomeEStadoEPaisDuplicadoValidator) {
+    public EstadoController(EstadoRepository estadoRepository, ProibeNomeEstadoEPaisDuplicadoEstadoValidator proibeNomeEstadoEPaisDuplicadoValidator) {
         this.estadoRepository = estadoRepository;
-        this.proibeNomeEStadoEPaisDuplicadoValidator = proibeNomeEStadoEPaisDuplicadoValidator;
+        this.proibeNomeEstadoEPaisDuplicadoEstadoValidator = proibeNomeEstadoEPaisDuplicadoValidator;
     }
 
     @InitBinder
     public void init(WebDataBinder binder) {
-        binder.addValidators(proibeNomeEStadoEPaisDuplicadoValidator);
+        binder.addValidators(proibeNomeEstadoEPaisDuplicadoEstadoValidator);
     }
 
     @PostMapping

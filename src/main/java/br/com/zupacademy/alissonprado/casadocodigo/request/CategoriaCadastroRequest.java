@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 
 public class CategoriaCadastroRequest {
 
-    @NotBlank @Size(max = 250)
+    @NotBlank
     @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
     private String nome;
 

@@ -29,7 +29,7 @@ public class LivroCadastroRequest {
 
     @NotNull
     @DecimalMin(value = "100")
-    private Integer paginas;
+    private Short paginas;
 
     @NotBlank
     @ISBN
@@ -51,7 +51,7 @@ public class LivroCadastroRequest {
     private Integer idAutor;
 
     @JsonCreator
-    public LivroCadastroRequest(String titulo, String resumo, String sumario, BigDecimal preco, Integer paginas, String isbn, LocalDate publicacao, Integer idCategoria, Integer idAutor) {
+    public LivroCadastroRequest(String titulo, String resumo, String sumario, BigDecimal preco, Short paginas, String isbn, LocalDate publicacao, Integer idCategoria, Integer idAutor) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;

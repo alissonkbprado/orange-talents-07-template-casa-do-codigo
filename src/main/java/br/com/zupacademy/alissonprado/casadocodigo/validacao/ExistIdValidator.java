@@ -21,6 +21,10 @@ public class ExistIdValidator implements ConstraintValidator<ExistId, Object> {
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext constraintValidatorContext) {
+
+        if(value == null || value == "" || !value.toString().matches("[0-9]*"))
+            return false;
+
         Query query = manager.createQuery("SELECT 1 FROM " + klass.getSimpleName() + " WHERE id = :value");
         query.setParameter("value", Long.parseLong(value.toString()));
 

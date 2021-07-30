@@ -1,5 +1,6 @@
 package br.com.zupacademy.alissonprado.casadocodigo.model;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,11 +16,11 @@ public class Autor {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank @Size(min = 5, max = 250)
+    @NotBlank @Size(min = 5)
     @Column(nullable = false)
     private String nome;
 
-    @NotBlank @Email @Size(max = 250)
+    @NotBlank @Email
     @Column(unique = true, nullable = false)
     private String email;
 
@@ -28,8 +29,8 @@ public class Autor {
     @Column(columnDefinition = "TEXT", length = 400, nullable = false)
     private String descricao;
 
-    @DateTimeFormat
-    private LocalDateTime dataCadastro = LocalDateTime.now();
+    @CreationTimestamp
+    private LocalDateTime dataCadastro;
 
     @OneToMany(mappedBy = "autor")
     private List<Livro> livros;

@@ -1,5 +1,6 @@
 package br.com.zupacademy.alissonprado.casadocodigo.validacao;
 
+import com.sun.xml.bind.v2.schemagen.episode.Klass;
 import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;

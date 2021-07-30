@@ -16,7 +16,6 @@ public class Estado {
 
     @NotNull
     @ManyToOne
-    @Column(nullable = false)
     private Pais pais;
 
     /**
@@ -25,6 +24,14 @@ public class Estado {
      */
     @Deprecated
     public Estado() {
+    }
+
+    /**
+     *
+     * @param id
+     */
+    public Estado(Long id) {
+        this.id = id;
     }
 
     /**
@@ -46,5 +53,9 @@ public class Estado {
 
     public Pais getPais() {
         return pais;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

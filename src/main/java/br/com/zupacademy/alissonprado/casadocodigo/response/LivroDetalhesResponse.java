@@ -14,8 +14,7 @@ public class LivroDetalhesResponse {
     private String paginas;
     private String isbn;
     private String publicacao;
-    private String nomeAutor;
-    private String descricaoAutor;
+    private AutorDetalhesResponse autor;
 
     public LivroDetalhesResponse(Livro livro) {
         this.id = livro.getId().toString();
@@ -26,8 +25,7 @@ public class LivroDetalhesResponse {
         this.paginas = livro.getPaginas().toString();
         this.isbn = livro.getIsbn();
         this.publicacao = livro.getPublicacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString();
-        this.nomeAutor = livro.getAutor().getNome();
-        this.descricaoAutor = livro.getAutor().getDescricao();
+        this.autor = new AutorDetalhesResponse(livro.getAutor());
     }
 
     public String getId() {
@@ -62,11 +60,7 @@ public class LivroDetalhesResponse {
         return publicacao;
     }
 
-    public String getNomeAutor() {
-        return nomeAutor;
-    }
-
-    public String getDescricaoAutor() {
-        return descricaoAutor;
+    public AutorDetalhesResponse getAutor() {
+        return autor;
     }
 }

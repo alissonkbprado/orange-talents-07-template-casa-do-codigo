@@ -10,14 +10,14 @@ import javax.validation.constraints.Size;
 
 public class AutorCadastroRequest {
 
-    @NotNull @NotBlank @Size(min = 5, max = 250)
+    @NotBlank @Size(min = 5)
     private String nome;
 
-    @NotNull @NotBlank @Email @Size(max = 250)
+    @NotBlank @Email
     @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
 
-    @NotNull @NotBlank @Size(max = 400)
+    @NotBlank @Size(max = 400)
     private String descricao;
 
     public AutorCadastroRequest(String nome, String email, String descricao) {
