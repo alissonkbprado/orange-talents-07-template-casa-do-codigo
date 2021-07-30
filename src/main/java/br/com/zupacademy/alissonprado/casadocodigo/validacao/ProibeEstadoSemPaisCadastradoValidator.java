@@ -3,6 +3,7 @@ package br.com.zupacademy.alissonprado.casadocodigo.validacao;
 import br.com.zupacademy.alissonprado.casadocodigo.model.Estado;
 import br.com.zupacademy.alissonprado.casadocodigo.model.Pais;
 import br.com.zupacademy.alissonprado.casadocodigo.repository.EstadoRepository;
+import br.com.zupacademy.alissonprado.casadocodigo.repository.PaisRepository;
 import br.com.zupacademy.alissonprado.casadocodigo.request.ClienteCadastroRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -14,9 +15,11 @@ import java.util.Optional;
 public class ProibeEstadoSemPaisCadastradoValidator implements Validator {
 
     private EstadoRepository estadoRepository;
+    private PaisRepository paisRepository;
 
-    public ProibeEstadoSemPaisCadastradoValidator(EstadoRepository estadoRepository) {
+    public ProibeEstadoSemPaisCadastradoValidator(EstadoRepository estadoRepository, PaisRepository paisRepository) {
         this.estadoRepository = estadoRepository;
+        this.paisRepository = paisRepository;
     }
 
     @Override
@@ -52,9 +55,9 @@ public class ProibeEstadoSemPaisCadastradoValidator implements Validator {
 
         Estado estado = estadoOptional.get();
 
-        Pais pais = new Pais(Long.parseLong(request.getIdPais()));
+        Optional<Pais> pais = paisRepository.findById(Long.parseLong(request.getIdPais()));
 
-        if(!estado.pertenceAPais(pais)) {
+        if(!estado.pertenceAPais(pais.get())) {
             errors.rejectValue("idEstado",null,"este estado não é o do país selecionado");
         }
 
