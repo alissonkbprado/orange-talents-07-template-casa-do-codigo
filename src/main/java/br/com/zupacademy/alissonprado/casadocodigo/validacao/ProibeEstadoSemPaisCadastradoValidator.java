@@ -1,6 +1,7 @@
 package br.com.zupacademy.alissonprado.casadocodigo.validacao;
 
 import br.com.zupacademy.alissonprado.casadocodigo.model.Estado;
+import br.com.zupacademy.alissonprado.casadocodigo.model.Pais;
 import br.com.zupacademy.alissonprado.casadocodigo.repository.EstadoRepository;
 import br.com.zupacademy.alissonprado.casadocodigo.request.ClienteCadastroRequest;
 import org.springframework.stereotype.Component;
@@ -49,13 +50,21 @@ public class ProibeEstadoSemPaisCadastradoValidator implements Validator {
             return;
         }
 
-        Estado estado = estadoRepository.findByNomeAndPais_Id(estadoOptional.get().getNome(), Long.parseLong(request.getIdPais()));
+        Estado estado = estadoOptional.get();
 
-        if (estado == null) {
-            errors.rejectValue("idEstado", null,
-                    "O Estado preenchido não pertence ao País informado.");
-            return;
+        Pais pais = new Pais(Long.parseLong(request.getIdPais()));
+
+        if(!estado.pertenceAPais(pais)) {
+            errors.rejectValue("idEstado",null,"este estado não é o do país selecionado");
         }
+
+//        Estado estado = estadoRepository.findByNomeAndPais_Id(estadoOptional.get().getNome(), Long.parseLong(request.getIdPais()));
+//
+//        if (estado == null) {
+//            errors.rejectValue("idEstado", null,
+//                    "O Estado preenchido não pertence ao País informado.");
+//            return;
+//        }
 
     }
 }
