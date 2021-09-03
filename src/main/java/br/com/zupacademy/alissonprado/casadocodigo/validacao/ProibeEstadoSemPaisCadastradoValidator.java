@@ -24,6 +24,7 @@ public class ProibeEstadoSemPaisCadastradoValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
+
         return ClienteCadastroRequest.class.isAssignableFrom(aClass);
     }
 

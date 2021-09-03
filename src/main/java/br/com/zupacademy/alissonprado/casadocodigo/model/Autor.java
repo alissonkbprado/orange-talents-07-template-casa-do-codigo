@@ -1,7 +1,6 @@
 package br.com.zupacademy.alissonprado.casadocodigo.model;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -50,7 +49,7 @@ public class Autor {
      * @param descricao NotNull, Max 400
      */
     public Autor(String nome, String email, String descricao) {
-        if(nome.isBlank()  || email.isBlank() || descricao.isBlank()){
+        if(nome == null  || email == null || descricao == null || nome.isBlank()  || email.isBlank() || descricao.isBlank()){
             throw new IllegalArgumentException("Todos os dados de Autor devem ser preenchidos.");
         }
         this.nome = nome;
@@ -75,5 +74,9 @@ public class Autor {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

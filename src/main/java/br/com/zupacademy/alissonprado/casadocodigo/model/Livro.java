@@ -23,6 +23,7 @@ public class Livro {
     private String resumo;
 
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     @Column(columnDefinition = "TEXT")
     private String sumario;
 

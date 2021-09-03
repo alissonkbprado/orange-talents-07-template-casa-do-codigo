@@ -31,7 +31,7 @@ public class Categoria {
      * @param nome NotNull, Unique
      */
     public Categoria(String nome) {
-        if(nome.isBlank())
+        if(nome == null || nome.isBlank())
             throw new IllegalArgumentException("Todos os dados de Categoria devem ser preenchidos.");
 
         this.nome = nome;
@@ -46,5 +46,13 @@ public class Categoria {
             throw new IllegalArgumentException("Campo id não pode ser nulo.");
 
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }
