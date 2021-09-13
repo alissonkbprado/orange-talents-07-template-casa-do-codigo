@@ -19,7 +19,7 @@ class LivroTest {
     static void setUp(){
         categoria = new Categoria("Categoria");
         autor = new Autor("Nome", "email@email.com", "Descrição");
-        dataPublicacao = LocalDate.of(2021, 9, 2);
+        dataPublicacao = LocalDate.now().plusDays(16);
     }
 
     @Test
@@ -31,7 +31,7 @@ class LivroTest {
                 new BigDecimal(12.23),
                 (short) 100,
                 "ISBN",
-                LocalDate.now(),
+                dataPublicacao,
                 categoria,
                 autor);
 
@@ -40,7 +40,7 @@ class LivroTest {
         assertEquals("Resumo", livro.getResumo());
         assertEquals(new BigDecimal(12.23), livro.getPreco());
         assertEquals((short) 100, livro.getPaginas());
-        assertEquals(LocalDate.of(2021, 9, 2), livro.getPublicacao());
+        assertEquals(LocalDate.now().plusDays(16), livro.getPublicacao());
         assertNotNull(livro.getAutor());
     }
 

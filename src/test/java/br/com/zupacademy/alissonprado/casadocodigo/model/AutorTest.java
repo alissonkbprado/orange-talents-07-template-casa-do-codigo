@@ -19,7 +19,8 @@ class AutorTest {
     @Test
     @DisplayName("Não deve cadastrar autor se nome for nulo")
     public void naoDeveCadastrarAutorComNomeNulo() {
-        assertThrows(IllegalArgumentException.class, () -> new Autor(null, "teste@gmail.com", "teste descição."));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Autor(null, "teste@gmail.com", "teste descição."));
+        assertEquals("Todos os dados de Autor devem ser preenchidos.", exception.getMessage());
     }
 
     @Test
